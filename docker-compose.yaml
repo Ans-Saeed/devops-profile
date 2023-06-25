@@ -1,0 +1,11 @@
+version: '2.2'
+
+services:
+  myresume:
+    container_name: myresume
+    image: anssaeed/myrepo:myresume-1.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
