@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myresume-ingress
+spec:
+  rules:
+  - host: ansresume.com
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: myresume-service
+            port: 
+              number: 80
+

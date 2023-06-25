@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myresume-depl  # Specify a name for the deployment
+  labels:
+    app: myresume
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myresume
+  template:
+    metadata:
+      labels:
+        app: myresume
+    spec:
+      containers:
+      - name: myresume
+        image: anssaeed/myrepo:myresume-1.0
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: myresume-service
+spec:
+  selector:
+    app: myresume
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
